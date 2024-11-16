@@ -27,10 +27,6 @@ const games = [
     darkLogo: '/game-logos/tarkov-white.png',
   },
   {
-    name: 'The Cycle',
-    logo: '/game-logos/cycle.png',
-  },
-  {
     name: 'Sea of Thieves',
     logo: '/game-logos/sea-of-thieves.png',
   },
@@ -48,7 +44,6 @@ export function GamesSection() {
           className="mb-16"
         />
 
-        {/* Games Logos Scroll */}
         <div className="relative">
           {/* Gradient Fade Left */}
           <div className="absolute left-0 top-0 w-16 h-full bg-gradient-to-r from-accent/5 to-transparent z-10" />
@@ -56,7 +51,6 @@ export function GamesSection() {
           {/* Gradient Fade Right */}
           <div className="absolute right-0 top-0 w-16 h-full bg-gradient-to-l from-accent/5 to-transparent z-10" />
 
-          {/* Scrollable Container */}
           <div className="overflow-x-auto scrollbar-hide">
             <div className="flex gap-8 pb-4 min-w-max px-8">
               {games.map((game, index) => (
@@ -67,7 +61,7 @@ export function GamesSection() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="flex flex-col items-center gap-4"
                 >
-                  <div className="relative w-32 h-32 bg-black/20 rounded-xl overflow-hidden backdrop-blur-sm flex items-center justify-center p-4">
+                  <div className="relative w-32 h-32 bg-white dark:bg-black/20 rounded-xl overflow-hidden shadow-md dark:shadow-none backdrop-blur-sm flex items-center justify-center p-4">
                     <div className="relative w-full h-full">
                       <Image
                         src={game.darkLogo && theme === 'dark' ? game.darkLogo : game.logo}
@@ -88,7 +82,7 @@ export function GamesSection() {
                 transition={{ duration: 0.5, delay: games.length * 0.1 }}
                 className="flex flex-col items-center gap-4"
               >
-                <div className="w-32 h-32 bg-black/10 rounded-xl flex items-center justify-center border border-dashed border-gray-600">
+                <div className="w-32 h-32 bg-white/50 dark:bg-black/10 rounded-xl flex items-center justify-center border border-dashed border-gray-300 dark:border-gray-600">
                   <div className="text-center">
                     <ChevronRight className="w-8 h-8 text-muted-foreground mx-auto" />
                     <span className="text-sm text-muted-foreground block mt-2">
