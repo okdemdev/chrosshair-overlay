@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { Download } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 interface DownloadEmailFormProps {
   variant?: 'default' | 'hero';
@@ -14,6 +15,7 @@ export function DownloadEmailForm({ variant = 'default' }: DownloadEmailFormProp
   const [email, setEmail] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { toast } = useToast();
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -45,6 +47,10 @@ export function DownloadEmailForm({ variant = 'default' }: DownloadEmailFormProp
       });
 
       window.location.href = 'https://storage.googleapis.com/chrossx3/ChrossX.exe';
+      setTimeout(() => {
+        router.push('/download-warning');
+      }, 500);
+
       setEmail('');
     } catch (error: any) {
       console.error('Error:', error);
