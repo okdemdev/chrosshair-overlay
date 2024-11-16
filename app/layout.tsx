@@ -115,8 +115,7 @@ export const metadata: Metadata = {
   manifest: '/site.webmanifest',
 
   verification: {
-    google: 'add-your-google-site-verification-here',
-    yandex: 'add-your-yandex-verification-here',
+    google: 'wf6rlrO_silzpHApqQdsj_5Er2oy4uJKT2_bspaRcxU',
   },
 
   other: {

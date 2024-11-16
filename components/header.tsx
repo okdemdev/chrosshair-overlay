@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { DownloadEmailForm } from '@/components/hero-email-form';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -69,8 +70,9 @@ export function Header() {
             </button>
           </nav>
 
-          {/* Download Form - Desktop */}
-          <div className="hidden md:block">
+          {/* Add ThemeToggle before the download form */}
+          <div className="hidden md:flex items-center gap-4">
+            <ThemeToggle />
             <DownloadEmailForm />
           </div>
 

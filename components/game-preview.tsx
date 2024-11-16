@@ -122,12 +122,16 @@ export function GamePreview({ dotSize, dotColor, crosshairStyle }: GamePreviewPr
             setSelectedGame(games.find((g) => g.id === value) || games[0])
           }
         >
-          <SelectTrigger className="w-40 bg-black/80 backdrop-blur-sm border-gray-800 text-sm">
+          <SelectTrigger className="w-40 bg-black/80 backdrop-blur-sm border-gray-800 text-white text-sm">
             <SelectValue />
           </SelectTrigger>
           <SelectContent className="bg-black/90 border-gray-800">
             {games.map((game) => (
-              <SelectItem key={game.id} value={game.id} className="focus:bg-white/10">
+              <SelectItem
+                key={game.id}
+                value={game.id}
+                className="text-white focus:bg-white/10 hover:bg-white/10 focus:text-white"
+              >
                 {game.name}
               </SelectItem>
             ))}
