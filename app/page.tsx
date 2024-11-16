@@ -1,11 +1,7 @@
 import Head from 'next/head';
-import { Crosshair, Zap, Shield, Target, Cpu, Clock, Gauge, Download } from 'lucide-react';
+import { Zap, Shield, Target, Cpu, Download } from 'lucide-react';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { EmailForm } from '@/components/email-form';
 import { Header } from '@/components/header';
 import { DownloadEmailForm } from '@/components/hero-email-form';
 import Script from 'next/script';
