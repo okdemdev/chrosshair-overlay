@@ -1,11 +1,17 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { DownloadEmailForm } from './hero-email-form';
 import { SocialShare } from './social-share';
-import Image from 'next/image';
+import { MiniCrosshairControl } from './mini-crosshair-control';
+import { GamePreview } from './game-preview';
 
 export function HeroSection() {
+  const [dotSize, setDotSize] = useState(5);
+  const [dotColor, setDotColor] = useState('#ff0000');
+  const [crosshairStyle, setCrosshairStyle] = useState({ id: 'dot', name: 'Dot', preview: '•' });
+
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center py-32 mt-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-accent/10">
       <div className="container mx-auto">
@@ -60,27 +66,19 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="mt-12 relative"
           >
-            <div className="aspect-video max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl border bg-card">
-              <Image
-                src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80"
-                alt="CHROSSX Interface"
-                width={1920}
-                height={1080}
-                className="object-cover"
-                priority
-              />
+            <div className="max-w-4xl mx-auto relative">
+              <GamePreview dotSize={dotSize} dotColor={dotColor} crosshairStyle={crosshairStyle} />
+
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
-                className="absolute top-4 right-4 w-64"
+                className="absolute -top-4 -right-4"
               >
-                <Image
-                  src="www.png"
-                  alt="CHROSSX UI"
-                  width={256}
-                  height={400}
-                  className="rounded-lg shadow-2xl"
+                <MiniCrosshairControl
+                  onSizeChange={setDotSize}
+                  onColorChange={setDotColor}
+                  onStyleChange={setCrosshairStyle}
                 />
               </motion.div>
             </div>
