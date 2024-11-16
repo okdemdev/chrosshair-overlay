@@ -4,6 +4,7 @@ import { SectionHeader } from './section-header';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
+import { useTheme } from 'next-themes';
 
 const games = [
   {
@@ -13,14 +14,17 @@ const games = [
   {
     name: 'DayZ',
     logo: '/game-logos/dayz.png',
+    darkLogo: '/game-logos/dayz-white.png',
   },
   {
     name: 'Hunt: Showdown',
     logo: '/game-logos/hunt.png',
+    darkLogo: '/game-logos/hunt-white.png',
   },
   {
     name: 'Escape from Tarkov',
     logo: '/game-logos/tarkov.png',
+    darkLogo: '/game-logos/tarkov-white.png',
   },
   {
     name: 'The Cycle',
@@ -33,6 +37,8 @@ const games = [
 ];
 
 export function GamesSection() {
+  const { theme } = useTheme();
+
   return (
     <section id="games" className="py-24 px-4 bg-accent/5">
       <div className="container mx-auto">
@@ -61,8 +67,15 @@ export function GamesSection() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="flex flex-col items-center gap-4"
                 >
-                  <div className="relative w-32 h-32 bg-black/20 rounded-xl overflow-hidden backdrop-blur-sm">
-                    <Image src={game.logo} alt={game.name} fill className="object-contain p-4" />
+                  <div className="relative w-32 h-32 bg-black/20 rounded-xl overflow-hidden backdrop-blur-sm flex items-center justify-center p-4">
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={game.darkLogo && theme === 'dark' ? game.darkLogo : game.logo}
+                        alt={game.name}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
                   </div>
                   <span className="text-sm text-muted-foreground">{game.name}</span>
                 </motion.div>
