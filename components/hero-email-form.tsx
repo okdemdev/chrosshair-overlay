@@ -20,7 +20,6 @@ export function DownloadEmailForm({ variant = 'default' }: DownloadEmailFormProp
     setIsLoading(true);
 
     try {
-      // Call the API to send the email
       const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
@@ -29,23 +28,29 @@ export function DownloadEmailForm({ variant = 'default' }: DownloadEmailFormProp
         body: JSON.stringify({ email }),
       });
 
-      if (response.ok) {
-        toast({
-          title: 'Download Started!',
-          description: 'Check your email for the activation key.',
-        });
-
-        // Trigger download
-        window.location.href = 'https://storage.googleapis.com/chrossx3/ChrossX.exe';
-      } else {
-        throw new Error('Failed to send email');
+      let data;
+      try {
+        data = await response.json();
+      } catch (error) {
+        throw new Error('Failed to parse server response');
       }
 
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send email');
+      }
+
+      toast({
+        title: 'Success!',
+        description: 'Check your email for the activation key.',
+      });
+
+      window.location.href = 'https://storage.googleapis.com/chrossx3/ChrossX.exe';
       setEmail('');
-    } catch (error) {
+    } catch (error: any) {
+      console.error('Error:', error);
       toast({
         title: 'Error',
-        description: 'Something went wrong. Please try again.',
+        description: error.message || 'Something went wrong. Please try again.',
         variant: 'destructive',
       });
     } finally {
