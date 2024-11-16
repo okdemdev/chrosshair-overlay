@@ -4,7 +4,10 @@ import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'CHROSSX | Free Crosshair Overlay for Windows',
@@ -79,6 +82,12 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },
+  verification: {
+    google: 'your-google-site-verification', // Add your Google verification code
+  },
+  other: {
+    'facebook-domain-verification': 'your-facebook-domain-verification', // Add your Facebook verification code
+  },
 };
 
 export default function RootLayout({
@@ -90,6 +99,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preload" href="/icon.png" as="image" type="image/png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       </head>
       <body className={inter.className}>
         <ThemeProvider

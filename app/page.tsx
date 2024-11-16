@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/card';
 import { Header } from '@/components/header';
 import { DownloadEmailForm } from '@/components/hero-email-form';
 import Script from 'next/script';
+import { SocialShare } from '@/components/social-share';
 
 export default function Home() {
   const pageTitle = 'CHROSSX: Free Customizable Crosshair Overlay for Gaming';
@@ -75,6 +76,11 @@ export default function Home() {
             <p className="text-sm text-muted-foreground mt-4">
               Download instantly and receive your activation key via email.
             </p>
+
+            <div className="mt-8 flex flex-col items-center gap-4">
+              <p className="text-sm text-muted-foreground">Share CHROSSX with others:</p>
+              <SocialShare />
+            </div>
 
             <div className="mt-12 relative">
               <div className="aspect-video max-w-4xl mx-auto rounded-lg overflow-hidden shadow-xl border">
