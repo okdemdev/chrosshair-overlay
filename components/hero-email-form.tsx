@@ -11,26 +11,35 @@ interface DownloadEmailFormProps {
 }
 
 export function DownloadEmailForm({ variant = 'default' }: DownloadEmailFormProps) {
-  const [email, setEmail] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { toast } = useToast();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-
-      // Show success toast
-      toast({
-        title: 'Download Started!',
-        description: 'Check your email for the activation key.',
+      // Call the API to send the email
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
       });
 
-      // Trigger download
-      window.location.href = '/download/chrossx-setup.exe';
+      if (response.ok) {
+        toast({
+          title: 'Download Started!',
+          description: 'Check your email for the activation key.',
+        });
+
+        // Trigger download
+        window.location.href = 'https://storage.googleapis.com/chrossx3/ChrossX.exe';
+      } else {
+        throw new Error('Failed to send email');
+      }
 
       setEmail('');
     } catch (error) {
