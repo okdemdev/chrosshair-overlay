@@ -11,6 +11,7 @@ import { FeaturesSection } from '@/components/features-section';
 import { GamesSection } from '@/components/games-section';
 import { Footer } from '@/components/footer';
 import { DownloadSection } from '@/components/download-section';
+import { AdvantagesSection } from '@/components/advantages-section';
 
 export default function Home() {
   const pageTitle = 'CHROSSX: Free Customizable Crosshair Overlay for Gaming';
@@ -68,6 +69,7 @@ export default function Home() {
       <main className="min-h-screen">
         <Header />
         <HeroSection />
+        <AdvantagesSection />
         <GamesSection />
         <FeaturesSection />
         <DownloadSection />

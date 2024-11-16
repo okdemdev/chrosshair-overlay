@@ -1,32 +1,34 @@
 'use client';
 
-import { AnimatedCard } from './animated-card';
 import { SectionHeader } from './section-header';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { ChevronRight } from 'lucide-react';
 
 const games = [
   {
-    title: 'Rust',
-    description:
-      'Enhance your PvP performance with a precise crosshair for better aim during raids and combat.',
-    image: '/games/rust.jpg',
+    name: 'Rust',
+    logo: '/game-logos/rust.png',
   },
   {
-    title: 'DayZ',
-    description:
-      'Improve your survival chances with accurate shooting in both PvP and PvE encounters.',
-    image: '/games/dayz.jpg',
+    name: 'DayZ',
+    logo: '/game-logos/dayz.png',
   },
   {
-    title: 'Other Compatible Games',
-    description: 'Works perfectly with any game without built-in crosshairs',
-    games: [
-      'Hunt: Showdown',
-      'Escape from Tarkov',
-      'The Cycle',
-      'Sea of Thieves',
-      'Any game without built-in crosshairs',
-    ],
+    name: 'Hunt: Showdown',
+    logo: '/game-logos/hunt.png',
+  },
+  {
+    name: 'Escape from Tarkov',
+    logo: '/game-logos/tarkov.png',
+  },
+  {
+    name: 'The Cycle',
+    logo: '/game-logos/cycle.png',
+  },
+  {
+    name: 'Sea of Thieves',
+    logo: '/game-logos/sea-of-thieves.png',
   },
 ];
 
@@ -35,52 +37,68 @@ export function GamesSection() {
     <section id="games" className="py-24 px-4 bg-accent/5">
       <div className="container mx-auto">
         <SectionHeader
-          title="Perfect for These Games"
-          subtitle="Enhance your gaming experience across multiple titles"
+          title="Perfect for Any Game"
+          subtitle="Works flawlessly with any game that lacks built-in crosshairs"
           className="mb-16"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {games.map((game, index) => (
-            <AnimatedCard
-              key={game.title}
-              delay={index * 0.1}
-              className="p-6 hover:shadow-lg overflow-hidden group"
-            >
+        {/* Games Logos Scroll */}
+        <div className="relative">
+          {/* Gradient Fade Left */}
+          <div className="absolute left-0 top-0 w-16 h-full bg-gradient-to-r from-accent/5 to-transparent z-10" />
+
+          {/* Gradient Fade Right */}
+          <div className="absolute right-0 top-0 w-16 h-full bg-gradient-to-l from-accent/5 to-transparent z-10" />
+
+          {/* Scrollable Container */}
+          <div className="overflow-x-auto scrollbar-hide">
+            <div className="flex gap-8 pb-4 min-w-max px-8">
+              {games.map((game, index) => (
+                <motion.div
+                  key={game.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="flex flex-col items-center gap-4"
+                >
+                  <div className="relative w-32 h-32 bg-black/20 rounded-xl overflow-hidden backdrop-blur-sm">
+                    <Image src={game.logo} alt={game.name} fill className="object-contain p-4" />
+                  </div>
+                  <span className="text-sm text-muted-foreground">{game.name}</span>
+                </motion.div>
+              ))}
+
+              {/* "And More" Card */}
               <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: games.length * 0.1 }}
+                className="flex flex-col items-center gap-4"
               >
-                <h3 className="text-xl font-bold mb-4">{game.title}</h3>
-                <p className="text-muted-foreground mb-4">{game.description}</p>
-                {game.games ? (
-                  <ul className="list-disc list-inside text-muted-foreground space-y-2">
-                    {game.games.map((title) => (
-                      <li key={title} className="group-hover:text-primary transition-colors">
-                        {title}
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  game.image && (
-                    <div className="relative h-48 rounded-lg overflow-hidden">
-                      <motion.img
-                        src={game.image}
-                        alt={game.title}
-                        className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-300"
-                        initial={{ scale: 1.1 }}
-                        whileInView={{ scale: 1 }}
-                        transition={{ duration: 0.5 }}
-                      />
-                    </div>
-                  )
-                )}
+                <div className="w-32 h-32 bg-black/10 rounded-xl flex items-center justify-center border border-dashed border-gray-600">
+                  <div className="text-center">
+                    <ChevronRight className="w-8 h-8 text-muted-foreground mx-auto" />
+                    <span className="text-sm text-muted-foreground block mt-2">
+                      Any Game Without
+                      <br />
+                      Built-in Crosshair
+                    </span>
+                  </div>
+                </div>
               </motion.div>
-            </AnimatedCard>
-          ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
+// Add this CSS to your globals.css
+// .scrollbar-hide::-webkit-scrollbar {
+//   display: none;
+// }
+// .scrollbar-hide {
+//   -ms-overflow-style: none;
+//   scrollbar-width: none;
+// }
