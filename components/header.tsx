@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { DownloadEmailForm } from '@/components/hero-email-form';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,6 +20,14 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsMobileMenuOpen(false);
+    }
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -26,31 +35,38 @@ export function Header() {
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <div className="flex-shrink-0">
+        <div className="flex items-center justify-between h-24">
+          <div className="flex items-center gap-4">
             <Image
               src="/icon.png"
               alt="CHROSSX Logo"
-              width={44}
-              height={44}
-              className="h-16 rounded-xl w-auto"
+              width={48}
+              height={48}
+              className="h-12 w-12 rounded-xl"
             />
+            <span className="text-2xl font-bold">CHROSSX</span>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <a
-              href="#features"
+            <button
+              onClick={() => scrollToSection('features')}
               className="text-foreground/80 hover:text-foreground transition-colors"
             >
               Features
-            </a>
-            <a
-              href="#why-chrossx"
+            </button>
+            <button
+              onClick={() => scrollToSection('games')}
               className="text-foreground/80 hover:text-foreground transition-colors"
             >
-              Why CHROSSX
-            </a>
+              Games
+            </button>
+            <button
+              onClick={() => scrollToSection('download')}
+              className="text-foreground/80 hover:text-foreground transition-colors"
+            >
+              Download
+            </button>
           </nav>
 
           {/* Download Form - Desktop */}
@@ -70,29 +86,40 @@ export function Header() {
         </div>
 
         {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <nav className="md:hidden py-4">
-            <div className="flex flex-col gap-4">
-              <a
-                href="#features"
-                className="text-foreground/80 hover:text-foreground transition-colors px-4 py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Features
-              </a>
-              <a
-                href="#why-chrossx"
-                className="text-foreground/80 hover:text-foreground transition-colors px-4 py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Why CHROSSX
-              </a>
-              <div className="px-4 py-2">
-                <DownloadEmailForm />
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.nav
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden py-4"
+            >
+              <div className="flex flex-col gap-4">
+                <button
+                  onClick={() => scrollToSection('features')}
+                  className="text-foreground/80 hover:text-foreground transition-colors px-4 py-2"
+                >
+                  Features
+                </button>
+                <button
+                  onClick={() => scrollToSection('games')}
+                  className="text-foreground/80 hover:text-foreground transition-colors px-4 py-2"
+                >
+                  Games
+                </button>
+                <button
+                  onClick={() => scrollToSection('download')}
+                  className="text-foreground/80 hover:text-foreground transition-colors px-4 py-2"
+                >
+                  Download
+                </button>
+                <div className="px-4 py-2">
+                  <DownloadEmailForm />
+                </div>
               </div>
-            </div>
-          </nav>
-        )}
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );
