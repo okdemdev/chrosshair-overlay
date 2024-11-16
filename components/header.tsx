@@ -29,11 +29,11 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/icon-bq26Y717yBCUhpsZGfrMPap0bCttsu.png"
+              src="/icon.png"
               alt="CHROSSX Logo"
-              width={120}
-              height={40}
-              className="h-8 w-auto"
+              width={44}
+              height={44}
+              className="h-16 rounded-xl w-auto"
             />
           </div>
 
