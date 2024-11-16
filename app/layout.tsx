@@ -7,7 +7,7 @@ import { Toaster } from '@/components/ui/toaster';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Free Crosshair Overlay for Rust & No-Crosshair Games | CHROSSX',
+  title: 'CHROSSX | Free Crosshair Overlay for Windows',
   description:
     'Download the best free crosshair overlay for Rust, Hunt: Showdown, DayZ, and other games without built-in crosshairs. Perfect for survival games and hardcore shooters.',
   keywords: [
@@ -72,6 +72,12 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  // Adding the favicon icons
+  icons: {
+    icon: '/icon.png',
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
 };
 
