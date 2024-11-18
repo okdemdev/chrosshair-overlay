@@ -48,11 +48,6 @@ export async function POST(request: Request) {
       'XHAIR-3456-7890-CDEF',
       'XHAIR-4567-8901-DEFG',
       'XHAIR-5678-9012-EFGH',
-      'XHAIR-6789-0123-FGHI',
-      'XHAIR-7890-1234-GHIJ',
-      'XHAIR-8901-2345-HIJK',
-      'XHAIR-9012-3456-IJKL',
-      'XHAIR-0123-4567-JKLM',
     ];
 
     const selectedKey = keys[Math.floor(Math.random() * keys.length)];
