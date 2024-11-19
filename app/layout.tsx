@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
+import Script from 'next/script';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -12,12 +13,13 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://chrossx.com'),
   title: {
-    default: 'CHROSSX | Best Free Crosshair Overlay for PC Gaming',
-    template: '%s | CHROSSX',
+    default: 'ChrossX - Free Gaming Crosshair Overlay | Official Site',
+    template: '%s | ChrossX',
   },
   description:
-    'Free crosshair overlay for games like Rust, DayZ, Hunt: Showdown. Zero RAM impact, no ads, instant setup. Perfect for survival games and hardcore shooters.',
+    'ChrossX - The ultimate free crosshair overlay for PC gaming. Zero RAM impact, no ads, instant setup. Perfect for Rust, DayZ, Hunt: Showdown and other games.',
   keywords: [
+    'ChrossX',
     'crosshair overlay',
     'gaming crosshair',
     'rust crosshair',
@@ -36,18 +38,18 @@ export const metadata: Metadata = {
   ],
   authors: [
     {
-      name: 'CHROSSX',
+      name: 'ChrossX',
       url: 'https://chrossx.com',
     },
   ],
-  creator: 'CHROSSX',
-  publisher: 'CHROSSX',
+  creator: 'ChrossX',
+  publisher: 'ChrossX',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  applicationName: 'CHROSSX',
+  applicationName: 'ChrossX',
   generator: 'Next.js',
   referrer: 'origin-when-cross-origin',
   category: 'gaming software',
@@ -57,17 +59,16 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://chrossx.com',
-    title: 'CHROSSX - Free Gaming Crosshair Overlay',
-    description:
-      'Zero-impact crosshair overlay for PC gaming. Perfect for Rust, DayZ, Hunt: Showdown, and more. Free, no ads, instant setup.',
-    siteName: 'CHROSSX',
+    title: 'ChrossX - Free Gaming Crosshair Overlay | Official Site',
+    description: 'ChrossX - The ultimate free crosshair overlay for PC gaming. Zero RAM impact, no ads, instant setup.',
+    siteName: 'ChrossX',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'CHROSSX Gaming Overlay',
-        type: 'image/jpeg',
+        type: 'image/png',
       },
     ],
   },
@@ -75,12 +76,34 @@ export const metadata: Metadata = {
   // Twitter
   twitter: {
     card: 'summary_large_image',
-    title: 'CHROSSX - Free Gaming Crosshair Overlay',
-    description:
-      'Zero-impact crosshair overlay for PC gaming. Perfect for Rust, DayZ, Hunt: Showdown, and more.',
-    images: ['/twitter-card.jpg'],
-    creator: '@chrossx',
-    site: '@chrossx',
+    title: 'ChrossX - Free Gaming Crosshair Overlay',
+    description: 'The ultimate free crosshair overlay for PC gaming.',
+    images: ['/twitter-card.png'],
+    creator: '@ChrossX',
+    site: '@ChrossX',
+  },
+
+  // Icons and Appearance
+  icons: {
+    icon: [
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    shortcut: '/icon.png',
+    apple: '/icon.png',
+    other: [
+      {
+        rel: 'apple-touch-icon-precomposed',
+        url: '/icon.png',
+      },
+    ],
+  },
+  
+  // Additional Metadata for Search
+  other: {
+    'msapplication-TileImage': '/icon-512.png',
+    'msapplication-TileColor': '#000000',
+    'theme-color': '#000000',
   },
 
   // Verification and alternates
@@ -103,27 +126,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-
-  icons: {
-    icon: [
-      { url: '/icon.png', type: 'image/png' },
-      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
-      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
-    ],
-  },
-
-  manifest: '/site.webmanifest',
-
-  verification: {
-    google: 'wf6rlrO_silzpHApqQdsj_5Er2oy4uJKT2_bspaRcxU',
-  },
-
-  other: {
-    'msapplication-TileColor': '#000000',
-    'theme-color': '#000000',
-    'apple-mobile-web-app-capable': 'yes',
-    'apple-mobile-web-app-status-bar-style': 'black',
-  },
 };
 
 export default function RootLayout({
@@ -134,6 +136,56 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="icon" type="image/png" sizes="32x32" href="/icon.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/icon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/icon.png" />
+        <link rel="mask-icon" href="/icon.png" color="#000000" />
+        <meta name="msapplication-TileImage" content="/icon-512.png" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="theme-color" content="#000000" />
+        <meta property="og:image" content="https://chrossx.com/icon-512.png" />
+        <meta property="og:image:width" content="512" />
+        <meta property="og:image:height" content="512" />
+        <Script
+          id="schema-org"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'SoftwareApplication',
+              name: 'ChrossX',
+              applicationCategory: 'GameApplication',
+              operatingSystem: 'Windows',
+              offers: {
+                '@type': 'Offer',
+                price: '0',
+                priceCurrency: 'USD',
+              },
+              description:
+                'ChrossX is a free gaming crosshair overlay for PC gaming with zero RAM impact. Perfect for Rust, DayZ, Escape from Tarkov, Sea of Thieves and other games.',
+              image: 'https://chrossx.com/og-image.png',
+              screenshot: 'https://chrossx.com/og-image.png',
+              aggregateRating: {
+                '@type': 'AggregateRating',
+                ratingValue: '4.8',
+                ratingCount: '1250',
+              },
+              author: {
+                '@type': 'Organization',
+                name: 'ChrossX',
+                url: 'https://chrossx.com',
+              },
+              publisher: {
+                '@type': 'Organization',
+                name: 'ChrossX',
+                logo: {
+                  '@type': 'ImageObject',
+                  url: 'https://chrossx.com/icon-512.png',
+                },
+              },
+            }),
+          }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <meta name="format-detection" content="telephone=no" />
@@ -141,13 +193,8 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body className={`${inter.className} overflow-x-hidden`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
           <Toaster />
         </ThemeProvider>

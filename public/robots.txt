@@ -1,4 +1,25 @@
+# ChrossX - Free Gaming Crosshair Overlay
 User-agent: *
 Allow: /
+Allow: /download
+Allow: /games/
+Allow: /features
+Allow: /images/
+Allow: /*.js
+Allow: /*.css
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.ico
 
-Sitemap: https://chrossx.com/sitemap.xml 
+# Prevent crawling of unnecessary directories
+Disallow: /api/
+Disallow: /_next/static/
+Disallow: /_next/image/
+
+# Crawl delay to prevent server overload
+Crawl-delay: 1
+
+# Sitemaps
+Sitemap: https://chrossx.com/sitemap.xml

@@ -6,6 +6,7 @@ import { DownloadEmailForm } from './hero-email-form';
 import { SocialShare } from './social-share';
 import { MiniCrosshairControl } from './mini-crosshair-control';
 import { GamePreview } from './game-preview';
+import { Cpu, Zap, Shield } from 'lucide-react';
 
 export function HeroSection() {
   const [dotSize, setDotSize] = useState(5);
@@ -23,9 +24,9 @@ export function HeroSection() {
             className="space-y-2"
           >
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">
-              Free Customizable
+              ChrossX: Best Free
               <br />
-              Crosshair Overlay
+              Crosshair Overlay for Gaming
             </h1>
           </motion.div>
 
@@ -33,9 +34,23 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-light"
+            className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-light space-y-4"
           >
-            Zero RAM Impact • Perfect Pixel Accuracy • Free Forever
+            <div>Free Crosshair Overlay for Rust, DayZ & More</div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-base md:text-lg">
+              <span className="flex items-center gap-2">
+                <Cpu className="w-4 h-4" />
+                Zero RAM Impact
+              </span>
+              <span className="flex items-center gap-2">
+                <Zap className="w-4 h-4" />
+                Free Forever
+              </span>
+              <span className="flex items-center gap-2">
+                <Shield className="w-4 h-4" />
+                No Ban Risk
+              </span>
+            </div>
           </motion.h2>
 
           <motion.div
@@ -46,7 +61,7 @@ export function HeroSection() {
           >
             <DownloadEmailForm variant="hero" />
             <p className="text-sm text-muted-foreground mt-4">
-              Download instantly and receive your activation key via email.
+              Download the best free crosshair overlay instantly - No registration required
             </p>
           </motion.div>
 

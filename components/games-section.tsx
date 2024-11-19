@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
 
 const games = [
   {
@@ -34,6 +35,31 @@ const games = [
 
 export function GamesSection() {
   const { theme } = useTheme();
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Check if user prefers dark mode
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setIsDarkMode(prefersDark);
+
+    // Listen for theme changes
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e: MediaQueryListEvent) => {
+      setIsDarkMode(e.matches);
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
+  // Update dark mode when theme changes
+  useEffect(() => {
+    if (theme === 'dark') {
+      setIsDarkMode(true);
+    } else if (theme === 'light') {
+      setIsDarkMode(false);
+    }
+  }, [theme]);
 
   return (
     <section id="games" className="py-24 px-4 bg-accent/5">
@@ -64,7 +90,7 @@ export function GamesSection() {
                   <div className="relative w-32 h-32 bg-white dark:bg-black/20 rounded-xl overflow-hidden shadow-md dark:shadow-none backdrop-blur-sm flex items-center justify-center p-4">
                     <div className="relative w-full h-full">
                       <Image
-                        src={game.darkLogo && theme === 'dark' ? game.darkLogo : game.logo}
+                        src={game.darkLogo && isDarkMode ? game.darkLogo : game.logo}
                         alt={game.name}
                         fill
                         className="object-contain"

@@ -16,7 +16,7 @@ import { AdvantagesSection } from '@/components/advantages-section';
 export default function Home() {
   const pageTitle = 'CHROSSX: Free Customizable Crosshair Overlay for Gaming';
   const pageDescription =
-    'Enhance your aim with CHROSSX - the free, zero-RAM crosshair overlay for Rust, DayZ and more. No ads, no watermarks, perfect pixel accuracy.';
+    'Enhance your aim with CHROSSX - the free, zero-RAM crosshair overlay for your favorite games. No ads, no watermarks, perfect pixel accuracy.';
 
   return (
     <>
