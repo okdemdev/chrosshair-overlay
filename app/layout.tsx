@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     siteName: 'ChrossX',
     images: [
       {
-        url: '/og-image.png',
+        url: 'https://chrossx.com/og-image.png',
         width: 1200,
         height: 630,
         alt: 'CHROSSX Gaming Overlay',
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'ChrossX - Free Gaming Crosshair Overlay',
     description: 'The ultimate free crosshair overlay for PC gaming.',
-    images: ['/twitter-card.png'],
+    images: ['https://chrossx.com/twitter-card.png'],
     creator: '@ChrossX',
     site: '@ChrossX',
   },
@@ -143,9 +143,6 @@ export default function RootLayout({
         <meta name="msapplication-TileImage" content="/icon-512.png" />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="theme-color" content="#000000" />
-        <meta property="og:image" content="https://chrossx.com/icon-512.png" />
-        <meta property="og:image:width" content="512" />
-        <meta property="og:image:height" content="512" />
         <Script
           id="schema-org"
           type="application/ld+json"
