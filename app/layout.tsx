@@ -60,7 +60,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://chrossx.com',
     title: 'ChrossX - Free Gaming Crosshair Overlay | Official Site',
-    description: 'ChrossX - The ultimate free crosshair overlay for PC gaming. Zero RAM impact, no ads, instant setup.',
+    description:
+      'ChrossX - The ultimate free crosshair overlay for PC gaming. Zero RAM impact, no ads, instant setup.',
     siteName: 'ChrossX',
     images: [
       {
@@ -98,7 +99,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-  
+
   // Additional Metadata for Search
   other: {
     'msapplication-TileImage': '/icon-512.png',
@@ -136,6 +137,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <script
+          defer
+          data-website-id="673c7c962d3efa7abcb78064"
+          data-domain="chrossx.com"
+          src="https://datafa.st/js/script.js"
+        ></script>
         <link rel="icon" type="image/png" sizes="32x32" href="/icon.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/icon.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/icon.png" />
